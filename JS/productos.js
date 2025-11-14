@@ -5,10 +5,18 @@ function App() {
   const [carrito, setCarrito] = useState([]);
   const [carritoAbierto, setCarritoAbierto] = useState(false);
 
+  // --- Cargar JSON desde /Data ---
   useEffect(() => {
     fetch("./Data/productos.json")
       .then(res => res.json())
-      .then(data => setProductos(data))
+      .then(data => {
+        // Ajustar rutas de imágenes siempre hacia carpeta /imagenes/
+        const productosConImagen = data.map(p => ({
+          ...p,
+          imagen: "./" + p.imagen
+        }));
+        setProductos(productosConImagen);
+      })
       .catch(err => console.error("Error cargando productos.json", err));
   }, []);
 
@@ -17,7 +25,9 @@ function App() {
       const existe = prev.find(p => p.nombre === prod.nombre);
       if (existe) {
         return prev.map(p =>
-          p.nombre === prod.nombre ? { ...p, cantidad: p.cantidad + 1 } : p
+          p.nombre === prod.nombre
+            ? { ...p, cantidad: p.cantidad + 1 }
+            : p
         );
       }
       return [...prev, { ...prod, cantidad: 1 }];
@@ -28,7 +38,9 @@ function App() {
     setCarrito(prev =>
       prev
         .map(p =>
-          p.nombre === nombre ? { ...p, cantidad: p.cantidad + delta } : p
+          p.nombre === nombre
+            ? { ...p, cantidad: p.cantidad + delta }
+            : p
         )
         .filter(p => p.cantidad > 0)
     );
@@ -48,7 +60,7 @@ function App() {
           onClick={() => (window.location.href = "index.html")}
         >
           <img
-            src="imagenes/logo.jpg"
+            src="./imagenes/logo.jpg"
             alt="Logo"
             className="h-12 w-12 md:h-20 md:w-20 rounded-full p-1"
           />
@@ -65,7 +77,9 @@ function App() {
         </nav>
 
         <div className="flex items-center space-x-3 mt-3 md:mt-0">
-          <button onClick={() => setCarritoAbierto(true)} className="bg-white text-black px-3 py-1 rounded-md font-semibold">
+          <button
+            onClick={() => setCarritoAbierto(true)}
+            className="bg-white text-black px-3 py-1 rounded-md font-semibold">
             🛒 Carrito
           </button>
         </div>
@@ -80,8 +94,8 @@ function App() {
           {productos.map((prod, i) => (
             <div
               key={i}
-              className="bg-white shadow-md rounded-xl p-4 w-[260px] md:w-[280px] flex flex-col items-center hover:scale-105 transition-transform duration-200"
-            >
+              className="bg-white shadow-md rounded-xl p-4 w-[260px] md:w-[280px] flex flex-col items-center hover:scale-105 transition-transform duration-200">
+
               <img
                 src={prod.imagen}
                 alt={prod.nombre}
@@ -95,8 +109,7 @@ function App() {
                 <span className="text-gray-800 font-semibold">{prod.precio}</span>
                 <button
                   className="bg-yellow-400 text-black px-3 py-1 rounded-lg font-semibold hover:bg-yellow-300 transition-all"
-                  onClick={() => agregar(prod)}
-                >
+                  onClick={() => agregar(prod)}>
                   AÑADIR
                 </button>
               </div>
@@ -117,11 +130,15 @@ function App() {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <button className="bg-gray-300 px-2 rounded" onClick={() => cambiarCantidad(item.nombre, -1)}>
+                  <button className="bg-gray-300 px-2 rounded"
+                    onClick={() => cambiarCantidad(item.nombre, -1)}>
                     -
                   </button>
+
                   <span>{item.cantidad}</span>
-                  <button className="bg-gray-300 px-2 rounded" onClick={() => cambiarCantidad(item.nombre, 1)}>
+
+                  <button className="bg-gray-300 px-2 rounded"
+                    onClick={() => cambiarCantidad(item.nombre, 1)}>
                     +
                   </button>
                 </div>
@@ -138,15 +155,13 @@ function App() {
                 if (carrito.length === 0) return alert("Tu carrito está vacío.");
                 alert("¡Gracias por tu compra!");
                 setCarrito([]);
-              }}
-            >
+              }}>
               Finalizar Compra
             </button>
 
             <button
               className="w-full mt-2 bg-gray-300 py-2 rounded-lg hover:bg-gray-400 transition"
-              onClick={() => setCarritoAbierto(false)}
-            >
+              onClick={() => setCarritoAbierto(false)}>
               Cerrar
             </button>
           </div>
