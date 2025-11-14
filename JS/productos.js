@@ -6,10 +6,10 @@ function App() {
   const [carritoAbierto, setCarritoAbierto] = useState(false);
 
   useEffect(() => {
-    fetch("Data/productos.json")
+    fetch("./Data/productos.json")
       .then(res => res.json())
       .then(data => setProductos(data))
-      .catch(err => console.error("Error al cargar Data/productos.json", err));
+      .catch(err => console.error("Error al cargar ./Data/productos.json", err));
   }, []);
 
   function agregar(prod) {
@@ -228,4 +228,5 @@ function App() {
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
 
