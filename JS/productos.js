@@ -119,13 +119,13 @@ function App() {
               key={i}
               className="bg-white shadow-md rounded-xl p-4 w-[260px] md:w-[280px] flex flex-col items-center hover:scale-105 transition-transform duration-200"
             >
-            `
-                <img
-                src="imagenes/${prod.imagen}"
+            
+              <img
+                src={`imagenes/${prod.imagen}`}
                 alt="${prod.nombre}"
                 class="h-44 md:h-48 w-full object-cover rounded-lg mb-4"
               />
-            `;
+            
               <h3 className="text-lg font-semibold mb-1">{prod.nombre}</h3>
               <p className="text-sm text-gray-700 mb-3 text-center">{prod.descripcion}</p>
 
@@ -230,4 +230,5 @@ function App() {
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
 
