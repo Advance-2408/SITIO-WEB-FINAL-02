@@ -121,7 +121,7 @@ function App() {
             >
             
               <img
-                src={`/${prod.imagen}`}
+                src={prod.imagen}
                 alt="${prod.nombre}"
                 class="h-44 md:h-48 w-full object-cover rounded-lg mb-4"
               />
@@ -230,6 +230,7 @@ function App() {
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
 
 
 
