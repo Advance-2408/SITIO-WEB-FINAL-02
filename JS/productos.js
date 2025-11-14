@@ -120,7 +120,7 @@ function App() {
               className="bg-white shadow-md rounded-xl p-4 w-[260px] md:w-[280px] flex flex-col items-center hover:scale-105 transition-transform duration-200"
             >
               <img
-                src={`../imagenes/${prod.imagen}`}
+                src={`/${prod.imagen}`}
                 alt={prod.nombre}
                 className="h-44 md:h-48 w-full object-cover rounded-lg mb-4"
               />
@@ -228,3 +228,4 @@ function App() {
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
