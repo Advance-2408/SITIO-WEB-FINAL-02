@@ -169,7 +169,37 @@ function App() {
       )}
     </>
   );
+
+function FooterProductos() {
+  return (
+    <footer className="w-full bg-gray-900 text-white py-10 px-4 md:px-8 flex flex-wrap justify-between gap-6 mt-12">
+      <div className="min-w-[200px]">
+        <h2 className="font-[Fredoka_One] text-xl mb-2">Happy Paws</h2>
+        <p className="text-xs md:text-sm leading-relaxed">Tu tienda de confianza para consentir a tus mascotas.<br/>Productos de calidad, amor y cuidado para cada patita feliz.</p>
+      </div>
+      <div className="min-w-[180px]">
+        <h2 className="font-[Fredoka_One] text-xl mb-2">Encuéntranos en:</h2>
+        <ul className="space-y-1 text-xs md:text-sm">
+          <li>📍 Calle mascotitas 333</li>
+          <li>📞 +51 999 888 777</li>
+          <li>✉️ happypaws@contact.pe</li>
+        </ul>
+      </div>
+      <div className="min-w-[160px]">
+        <h2 className="font-[Fredoka_One] text-xl mb-2">Síguenos en:</h2>
+        <div className="flex space-x-4 text-xl md:text-2xl">
+          <a href="#" className="hover:text-orange-400">📘</a>
+          <a href="#" className="hover:text-orange-400">📷</a>
+          <a href="#" className="hover:text-orange-400">🐦</a>
+          <a href="#" className="hover:text-orange-400">💬</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
 }
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
 
