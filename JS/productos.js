@@ -5,7 +5,7 @@ function App() {
   const [carrito, setCarrito] = useState([]);
   const [carritoAbierto, setCarritoAbierto] = useState(false);
 
-  // --- Cargar JSON desde /Data ---
+
   useEffect(() => {
     fetch("./Data/productos.json")
       .then(res => res.json())
@@ -172,3 +172,4 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
