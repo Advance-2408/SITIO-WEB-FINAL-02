@@ -84,6 +84,7 @@ function App() {
 
   return (
     <>
+
       <header className="w-full bg-orange-500 flex flex-wrap justify-between items-center px-4 md:px-8 py-3 text-white">
         <div
           className="flex items-center space-x-3 cursor-pointer"
@@ -116,6 +117,7 @@ function App() {
         </div>
       </header>
 
+      {/* MAIN */}
       <main className="px-4 md:px-10 py-10">
         <h1 className="text-2xl md:text-4xl font-[Fredoka_One] text-center mb-12 text-black">
           PRODUCTOS PARA LOS ENGREÍDOS DEL HOGAR
